@@ -65,7 +65,7 @@ export default function MainNav() {
                     Remove an existing portal
                   </ListItem>
                   <ListItem href="/portals/access" title="Manage Access" icon={<KeyRound className="h-4 w-4 mr-2" />}>
-                    Manage portal access
+                    Add Domain access
                   </ListItem>
                   <ListItem
                     href="/teachers/manage"
@@ -74,8 +74,8 @@ export default function MainNav() {
                   >
                     Add or remove teachers
                   </ListItem>
-                  <ListItem href="/admins/manage" title="Manage Admins" icon={<UserCog className="h-4 w-4 mr-2" />}>
-                    Add or remove system administrators
+                  <ListItem href="/portals/admins/manage" title="Manage Admins" icon={<UserCog className="h-4 w-4 mr-2" />}>
+                    Add or remove admins
                   </ListItem>
                 </ul>
               </NavigationMenuContent>

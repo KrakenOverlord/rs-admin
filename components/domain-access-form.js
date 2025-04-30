@@ -113,7 +113,7 @@ export function DomainAccessForm() {
 
   return (
     <div className="rounded-lg border p-6 shadow-sm">
-      <h2 className="text-xl font-semibold mb-6">Add Portal Access</h2>
+      <h2 className="text-xl font-semibold mb-6">Add Domain Access</h2>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">

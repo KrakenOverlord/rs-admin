@@ -3,7 +3,7 @@ export async function GET() {
   // In a real application, you would fetch this data from a database or external API
 
   // Simulate a slight delay to show loading state
-  await new Promise((resolve) => setTimeout(resolve, 1000))
+  await new Promise((resolve) => setTimeout(resolve, 500))
 
   // Sample data
   const data = [
