@@ -95,7 +95,7 @@ export default function InvoiceUtilityPortal() {
             <h3 className="mt-12 font-medium mb-2">Copy the text below and paste it into the invoice:</h3>
             <div className="mt-2 p-4 bg-muted rounded-md">
               <span className="space-y-2 text-sm">Supports up to {formData.numberOfUsers} teachers.
-                {formData.accessType === "assigned" ? " Includes Management Portal" : " Includes automated domain provisioning"}
+                {formData.accessType === "assigned" ? " Includes Management Portal" : " Includes automated access provisioning"}
 
                 {domainList.length > 0 && (
                   <span>{domainList.length > 1 ? ` for domains: ${domainList.join(", ")}.` : ` for domain: ${domainList[0]}.`}</span>
