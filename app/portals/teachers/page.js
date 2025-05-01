@@ -1,4 +1,4 @@
-export default function AddPortal() {
+export default function TeachersPortal() {
   return (
     <div>
     </div>

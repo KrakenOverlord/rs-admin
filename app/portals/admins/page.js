@@ -10,7 +10,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { Badge } from "@/components/ui/badge"
 
-export default function LocationAdminManagement() {
+export default function AdminsPortal() {
   const [locations, setLocations] = useState([])
   const [loading, setLoading] = useState(true)
   const [selectedLocationId, setSelectedLocationId] = useState(null)

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 
-export default function InvoiceUtilityPage() {
+export default function InvoiceUtilityPortal() {
   const [formData, setFormData] = useState({
     accessType: "assigned",
     numberOfUsers: 1,
