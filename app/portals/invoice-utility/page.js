@@ -40,7 +40,7 @@ export default function InvoiceUtilityPortal() {
   return (
     <main className="flex-1 p-6">
       <h1 className="text-2xl font-bold">Invoice Utility</h1>
-      <p className="mt-2 text-muted-foreground">Generate an invoice item description that can be copy/pasted into the invoice.</p>
+      <p className="mt-2 text-muted-foreground">Generate an invoice item description to copy/paste into the invoice.</p>
 
       <div className="mt-6 grid gap-8 md:grid-cols-2">
         <div>
