@@ -83,7 +83,7 @@ const HoverDropdown = ({ trigger, children, className }) => {
     >
       <div className="cursor-pointer">{trigger}</div>
       {isOpen && (
-        <div className="absolute left-0 mt-1 w-56 rounded-md border bg-popover p-1 text-popover-foreground shadow-md outline-none z-50 animate-in fade-in-80 data-[side=bottom]:slide-in-from-top-1 data-[side=left]:slide-in-from-right-1 data-[side=right]:slide-in-from-left-1 data-[side=top]:slide-in-from-bottom-1">
+        <div className="absolute right-0 mt-1 w-56 rounded-md border bg-popover p-1 text-popover-foreground shadow-md outline-none z-50 animate-in fade-in-80 data-[side=bottom]:slide-in-from-top-1 data-[side=left]:slide-in-from-right-1 data-[side=right]:slide-in-from-left-1 data-[side=top]:slide-in-from-bottom-1 overflow-hidden">
           {children}
         </div>
       )}
