@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import {
   GraduationCap,
@@ -16,6 +17,7 @@ import {
   Lock,
   FileText,
   ChevronDown,
+  Settings,
 } from "lucide-react"
 
 const MenuItem = ({ href, icon: Icon, children }) => {
@@ -89,8 +91,16 @@ export function MainMenu() {
   return (
     <div className="border-b">
       <div className="flex h-16 items-center px-4">
-        <div className="mr-6 font-bold text-xl">Razor Sparrow Admin</div>
-        <div className="flex items-center space-x-4">
+        <div className="mr-6 flex items-center">
+          <Image
+            src="/razor-sparrow-logo.png"
+            alt="Razor Sparrow Logo"
+            width={120}
+            height={40}
+            className="h-8 w-auto"
+          />
+        </div>
+        <div className="flex items-center space-x-4 ml-20">
           {/* Teachers Dropdown */}
           <HoverDropdown
             trigger={
@@ -140,8 +150,22 @@ export function MainMenu() {
               <MenuItem href="/portals/access" icon={Lock}>
                 Manage Access
               </MenuItem>
+            </div>
+          </HoverDropdown>
+
+          {/* Utilities Dropdown */}
+          <HoverDropdown
+            trigger={
+              <div className="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-md hover:bg-accent hover:text-accent-foreground">
+                <Settings className="h-4 w-4" />
+                <span>Utilities</span>
+                <ChevronDown className="h-4 w-4 ml-1" />
+              </div>
+            }
+          >
+            <div className="py-1">
               <MenuItem href="/portals/invoice-utility" icon={FileText}>
-                Invoice Utility
+                Invoice Item Description
               </MenuItem>
             </div>
           </HoverDropdown>
