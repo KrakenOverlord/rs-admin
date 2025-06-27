@@ -210,7 +210,7 @@ export default function AdminPortalPage() {
           <CardHeader>
             <CardTitle>Admins</CardTitle>
             <CardDescription>
-              {selectedPortal ? `Manage admins for ${selectedPortal.name}` : "Select a portal to view admins"}
+              {selectedPortal ? `Manage admins for ${selectedPortal.locationName}` : "Select a portal to view admins"}
             </CardDescription>
           </CardHeader>
           <CardContent>
