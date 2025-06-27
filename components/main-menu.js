@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
+import { useTheme } from "next-themes"
 import {
   GraduationCap,
   Layers,
@@ -21,6 +22,8 @@ import {
   LogIn,
   LogOut,
   User,
+  Sun,
+  Moon,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -95,11 +98,33 @@ export function MainMenu() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [userName, setUserName] = useState("")
   const [isLoading, setIsLoading] = useState(true)
+  const { theme, setTheme } = useTheme()
 
   // Check authentication status on component mount
   useEffect(() => {
+    saveUrlParams()
     checkAuthStatus()
   }, [])
+
+  const saveUrlParams = () => {
+    // Get URL parameters from the current page
+    const urlParams = new URLSearchParams(window.location.search)
+
+    // Save each parameter to localStorage
+    for (const [key, value] of urlParams.entries()) {
+      localStorage.setItem(key, value)
+    }
+
+    // If there were URL parameters, clean up the URL
+    if (urlParams.toString()) {
+      const cleanUrl = window.location.pathname + window.location.hash
+      window.history.replaceState({}, document.title, cleanUrl)
+    }
+  }
+
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark')
+  }
 
   const checkAuthStatus = async () => {
     try {
@@ -174,7 +199,11 @@ export function MainMenu() {
               alt="Razor Sparrow Logo"
               width={120}
               height={40}
-              className="h-8 w-auto"
+              className={`h-8 w-auto ${
+                theme === 'dark'
+                  ? 'brightness-0 invert filter'
+                  : ''
+              }`}
             />
           </div>
           <div className="flex items-center space-x-4 ml-20">
@@ -250,7 +279,22 @@ export function MainMenu() {
         </div>
 
         {/* Auth Section - Right Side */}
-        <div className="flex items-center">
+        <div className="flex items-center space-x-2">
+          {/* Theme Toggle */}
+          <Button
+            onClick={toggleTheme}
+            variant="ghost"
+            size="sm"
+            className="h-8 w-8 p-0"
+          >
+            {theme === 'dark' ? (
+              <Sun className="h-4 w-4" />
+            ) : (
+              <Moon className="h-4 w-4" />
+            )}
+            <span className="sr-only">Toggle theme</span>
+          </Button>
+
           {isLoading ? (
             <div className="w-20 h-8 bg-muted animate-pulse rounded"></div>
           ) : isLoggedIn ? (
