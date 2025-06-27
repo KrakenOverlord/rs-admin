@@ -35,12 +35,24 @@ export default function AdminPortalPage() {
   const fetchPortals = async () => {
     setIsLoadingPortals(true)
     try {
-      const response = await fetch("/api/getPortals")
+      // Get the access token from localStorage
+      const accessToken = localStorage.getItem('accessToken')
+
+      if (!accessToken) {
+        throw new Error("No access token found")
+      }
+
+      const response = await fetch("/api/getPortals", {
+        headers: {
+          "Authorization": `Bearer ${accessToken}`
+        }
+      })
       if (!response.ok) {
         throw new Error("Failed to fetch portals")
       }
       const data = await response.json()
-      setPortals(data)
+      console.log(data)
+      setPortals(data.portals)
     } catch (error) {
       console.error("Error fetching portals:", error)
       toast.error("Failed to load portals. Please try again.")
@@ -52,7 +64,18 @@ export default function AdminPortalPage() {
   const fetchAdmins = async (portalId) => {
     setIsLoadingAdmins(true)
     try {
-      const response = await fetch(`/api/getAdmins?portalId=${portalId}`)
+      // Get the access token from localStorage
+      const accessToken = localStorage.getItem('accessToken')
+
+      if (!accessToken) {
+        throw new Error("No access token found")
+      }
+
+      const response = await fetch(`/api/getPortalAdmins?portalId=${portalId}`, {
+        headers: {
+          "Authorization": `Bearer ${accessToken}`
+        }
+      })
       if (!response.ok) {
         throw new Error("Failed to fetch admins")
       }
@@ -174,7 +197,7 @@ export default function AdminPortalPage() {
                     className="w-full justify-start text-left"
                     onClick={() => handlePortalSelect(portal)}
                   >
-                    {portal.name}
+                    {portal.locationName}
                   </Button>
                 ))}
               </div>
