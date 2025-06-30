@@ -27,7 +27,7 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-const relevantAuthFields = ['uid', 'accessToken', 'displayName', 'email']
+const relevantAuthFields = ['uid', 'accessToken', 'refreshToken', 'displayName', 'email']
 
 const MenuItem = ({ href, icon: Icon, children }) => {
   const pathname = usePathname()
