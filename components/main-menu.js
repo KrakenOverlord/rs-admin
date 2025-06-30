@@ -207,57 +207,61 @@ export function MainMenu() {
             />
           </div>
           <div className="flex items-center space-x-4 ml-20">
-            {/* Teachers Dropdown */}
-            <HoverDropdown
-              trigger={
-                <div className="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-md hover:bg-accent hover:text-accent-foreground">
-                  <GraduationCap className="h-4 w-4" />
-                  <span>Teachers</span>
-                  <ChevronDown className="h-4 w-4 ml-1" />
+            {/* Teachers Dropdown - Only show when logged in */}
+            {isLoggedIn && (
+              <HoverDropdown
+                trigger={
+                  <div className="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-md hover:bg-accent hover:text-accent-foreground">
+                    <GraduationCap className="h-4 w-4" />
+                    <span>Teachers</span>
+                    <ChevronDown className="h-4 w-4 ml-1" />
+                  </div>
+                }
+              >
+                <div className="py-1">
+                  <MenuItem href="/teachers/add" icon={UserPlus}>
+                    Add Teacher
+                  </MenuItem>
+                  <MenuItem href="/teachers/remove" icon={UserMinus}>
+                    Remove Teacher
+                  </MenuItem>
+                  <MenuItem href="/teachers/access" icon={Shield}>
+                    Manage Access
+                  </MenuItem>
                 </div>
-              }
-            >
-              <div className="py-1">
-                <MenuItem href="/teachers/add" icon={UserPlus}>
-                  Add Teacher
-                </MenuItem>
-                <MenuItem href="/teachers/remove" icon={UserMinus}>
-                  Remove Teacher
-                </MenuItem>
-                <MenuItem href="/teachers/access" icon={Shield}>
-                  Manage Access
-                </MenuItem>
-              </div>
-            </HoverDropdown>
+              </HoverDropdown>
+            )}
 
-            {/* Portals Dropdown */}
-            <HoverDropdown
-              trigger={
-                <div className="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-md hover:bg-accent hover:text-accent-foreground">
-                  <Layers className="h-4 w-4" />
-                  <span>Portals</span>
-                  <ChevronDown className="h-4 w-4 ml-1" />
+            {/* Portals Dropdown - Only show when logged in */}
+            {isLoggedIn && (
+              <HoverDropdown
+                trigger={
+                  <div className="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-md hover:bg-accent hover:text-accent-foreground">
+                    <Layers className="h-4 w-4" />
+                    <span>Portals</span>
+                    <ChevronDown className="h-4 w-4 ml-1" />
+                  </div>
+                }
+              >
+                <div className="py-1">
+                  <MenuItem href="/portals/add" icon={FolderPlus}>
+                    Add Portal
+                  </MenuItem>
+                  <MenuItem href="/portals/remove" icon={FolderMinus}>
+                    Remove Portal
+                  </MenuItem>
+                  <MenuItem href="/portals/admins" icon={Users}>
+                    Manage Admins
+                  </MenuItem>
+                  <MenuItem href="/portals/teachers" icon={UserCog}>
+                    Manage Teachers
+                  </MenuItem>
+                  <MenuItem href="/portals/access" icon={Lock}>
+                    Manage Access
+                  </MenuItem>
                 </div>
-              }
-            >
-              <div className="py-1">
-                <MenuItem href="/portals/add" icon={FolderPlus}>
-                  Add Portal
-                </MenuItem>
-                <MenuItem href="/portals/remove" icon={FolderMinus}>
-                  Remove Portal
-                </MenuItem>
-                <MenuItem href="/portals/admins" icon={Users}>
-                  Manage Admins
-                </MenuItem>
-                <MenuItem href="/portals/teachers" icon={UserCog}>
-                  Manage Teachers
-                </MenuItem>
-                <MenuItem href="/portals/access" icon={Lock}>
-                  Manage Access
-                </MenuItem>
-              </div>
-            </HoverDropdown>
+              </HoverDropdown>
+            )}
 
             {/* Utilities Dropdown */}
             <HoverDropdown
