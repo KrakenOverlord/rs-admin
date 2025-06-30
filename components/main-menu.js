@@ -27,6 +27,8 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
+const relevantAuthFields = ['uid', 'accessToken', 'displayName', 'email']
+
 const MenuItem = ({ href, icon: Icon, children }) => {
   const pathname = usePathname()
   const isActive = pathname === href
@@ -112,7 +114,7 @@ export function MainMenu() {
 
     // Save each parameter to localStorage
     for (const [key, value] of urlParams.entries()) {
-      localStorage.setItem(key, value)
+      if (relevantAuthFields.includes(key)) localStorage.setItem(key, value)
     }
 
     // If there were URL parameters, clean up the URL
@@ -175,11 +177,9 @@ export function MainMenu() {
 
   const handleLogout = () => {
     // Clear auth data
-    localStorage.removeItem('uid')
-    localStorage.removeItem('displayName')
-    localStorage.removeItem('authToken')
-    sessionStorage.removeItem('authToken')
-    localStorage.removeItem('userName')
+    for (const key of relevantAuthFields) {
+      localStorage.removeItem(key)
+    }
 
     // Update state
     setIsLoggedIn(false)
